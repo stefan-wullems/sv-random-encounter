@@ -1,6 +1,8 @@
+const _ = require('lodash') 
+const fs = require('fs')
 
 const encounterRates = `
-Pikachu:
+-++ Pikachu:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 10
@@ -10,7 +12,7 @@ Pikachu:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Light Ball (5%)
-Raichu:
+-++ Raichu:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 40
@@ -20,7 +22,7 @@ Raichu:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Raichu:
+-++ Raichu:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 40
@@ -30,7 +32,7 @@ Raichu:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Jigglypuff:
+-++ Jigglypuff:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 10
@@ -40,7 +42,7 @@ Jigglypuff:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Wigglytuff:
+-++ Wigglytuff:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 40
@@ -50,7 +52,7 @@ Wigglytuff:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Venonat:
+-++ Venonat:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 17
@@ -60,7 +62,7 @@ Venonat:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Venomoth:
+-++ Venomoth:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 31
@@ -70,7 +72,7 @@ Venomoth:
     Time: Night
     Version: Scarlet, Violet
     Held Item: None
-Venomoth:
+-++ Venomoth:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 31
@@ -80,7 +82,7 @@ Venomoth:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Diglett:
+-++ Diglett:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 2
@@ -90,7 +92,7 @@ Diglett:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Dugtrio:
+-++ Dugtrio:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 26
@@ -100,7 +102,7 @@ Dugtrio:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Meowth:
+-++ Meowth:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 14
@@ -110,7 +112,7 @@ Meowth:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Persian:
+-++ Persian:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 28
@@ -120,7 +122,7 @@ Persian:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Psyduck:
+-++ Psyduck:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 5
@@ -130,7 +132,7 @@ Psyduck:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Golduck:
+-++ Golduck:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 33
@@ -140,7 +142,7 @@ Golduck:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Mankey:
+-++ Mankey:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 15
@@ -150,7 +152,7 @@ Mankey:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Primeape:
+-++ Primeape:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 28
@@ -160,7 +162,7 @@ Primeape:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Growlithe:
+-++ Growlithe:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 17
@@ -170,7 +172,7 @@ Growlithe:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Arcanine:
+-++ Arcanine:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 47
@@ -180,7 +182,7 @@ Arcanine:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Slowpoke:
+-++ Slowpoke:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 23
@@ -190,7 +192,7 @@ Slowpoke:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Slowbro:
+-++ Slowbro:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 37
@@ -200,7 +202,7 @@ Slowbro:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Magnemite:
+-++ Magnemite:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 16
@@ -210,7 +212,7 @@ Magnemite:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Magneton:
+-++ Magneton:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 30
@@ -220,7 +222,7 @@ Magneton:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Grimer:
+-++ Grimer:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 19
@@ -230,7 +232,7 @@ Grimer:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Muk:
+-++ Muk:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 38
@@ -240,7 +242,7 @@ Muk:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Shellder:
+-++ Shellder:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 15
@@ -250,7 +252,7 @@ Shellder:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Cloyster:
+-++ Cloyster:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 35
@@ -260,7 +262,7 @@ Cloyster:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Gastly:
+-++ Gastly:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 2
@@ -270,7 +272,7 @@ Gastly:
     Time: Night
     Version: Scarlet, Violet
     Held Item: None
-Gastly:
+-++ Gastly:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 2
@@ -280,7 +282,7 @@ Gastly:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Haunter:
+-++ Haunter:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 25
@@ -290,7 +292,7 @@ Haunter:
     Time: Night
     Version: Scarlet, Violet
     Held Item: None
-Drowzee:
+-++ Drowzee:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 2
@@ -300,7 +302,7 @@ Drowzee:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Hypno:
+-++ Hypno:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 28
@@ -310,7 +312,7 @@ Hypno:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Hypno:
+-++ Hypno:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 28
@@ -320,7 +322,7 @@ Hypno:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Voltorb:
+-++ Voltorb:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 26
@@ -330,7 +332,7 @@ Voltorb:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Electrode:
+-++ Electrode:
     Gender: Default
     Encounter Rate: 20%
     Minimum Level: 32
@@ -340,7 +342,7 @@ Electrode:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Chansey:
+-++ Chansey:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 25
@@ -350,7 +352,7 @@ Chansey:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Oval Stone (30%)
-Scyther:
+-++ Scyther:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 15
@@ -360,7 +362,7 @@ Scyther:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Scyther:
+-++ Scyther:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 15
@@ -370,7 +372,7 @@ Scyther:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Tauros-1:
+-++ Tauros-1:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 22
@@ -380,7 +382,7 @@ Tauros-1:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Tauros-2:
+-++ Tauros-2:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 25
@@ -390,7 +392,7 @@ Tauros-2:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet
     Held Item: None
-Tauros-3:
+-++ Tauros-3:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 25
@@ -400,7 +402,7 @@ Tauros-3:
     Time: Morning, Noon, Evening, Night
     Version: Violet
     Held Item: None
-Magikarp:
+-++ Magikarp:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 2
@@ -410,7 +412,7 @@ Magikarp:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Gyarados:
+-++ Gyarados:
     Gender: Default
     Encounter Rate: 5%
     Minimum Level: 20
@@ -420,7 +422,7 @@ Gyarados:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Gyarados:
+-++ Gyarados:
     Gender: Default
     Encounter Rate: 5%
     Minimum Level: 20
@@ -430,7 +432,7 @@ Gyarados:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Ditto:
+-++ Ditto:
     Gender: Default
     Encounter Rate: 20%
     Minimum Level: 28
@@ -440,7 +442,7 @@ Ditto:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Eevee:
+-++ Eevee:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 11
@@ -450,7 +452,7 @@ Eevee:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Vaporeon:
+-++ Vaporeon:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 35
@@ -460,7 +462,7 @@ Vaporeon:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Jolteon:
+-++ Jolteon:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 35
@@ -470,7 +472,7 @@ Jolteon:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Flareon:
+-++ Flareon:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 35
@@ -480,7 +482,7 @@ Flareon:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Dratini:
+-++ Dratini:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 20
@@ -490,7 +492,7 @@ Dratini:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Dratini:
+-++ Dratini:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 20
@@ -500,7 +502,7 @@ Dratini:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Dratini:
+-++ Dratini:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 20
@@ -510,7 +512,7 @@ Dratini:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Dragonair:
+-++ Dragonair:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 50
@@ -520,7 +522,7 @@ Dragonair:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Pichu:
+-++ Pichu:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 5
@@ -530,7 +532,7 @@ Pichu:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Igglybuff:
+-++ Igglybuff:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 5
@@ -540,7 +542,7 @@ Igglybuff:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Mareep:
+-++ Mareep:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 9
@@ -550,7 +552,7 @@ Mareep:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Flaaffy:
+-++ Flaaffy:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 22
@@ -560,7 +562,7 @@ Flaaffy:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Flaaffy:
+-++ Flaaffy:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 37
@@ -570,7 +572,7 @@ Flaaffy:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Ampharos:
+-++ Ampharos:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 42
@@ -580,7 +582,7 @@ Ampharos:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Marill:
+-++ Marill:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 19
@@ -590,7 +592,7 @@ Marill:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Marill:
+-++ Marill:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 19
@@ -600,7 +602,7 @@ Marill:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Azumarill:
+-++ Azumarill:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 28
@@ -610,7 +612,7 @@ Azumarill:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Sudowoodo:
+-++ Sudowoodo:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 20
@@ -620,7 +622,7 @@ Sudowoodo:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Hoppip:
+-++ Hoppip:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 2
@@ -630,7 +632,7 @@ Hoppip:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Skiploom:
+-++ Skiploom:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 18
@@ -640,7 +642,7 @@ Skiploom:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Jumpluff:
+-++ Jumpluff:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 33
@@ -650,7 +652,7 @@ Jumpluff:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Jumpluff:
+-++ Jumpluff:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 33
@@ -660,7 +662,7 @@ Jumpluff:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Sunkern:
+-++ Sunkern:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 5
@@ -670,7 +672,7 @@ Sunkern:
     Time: Morning, Noon, Evening
     Version: Scarlet, Violet
     Held Item: None
-Sunflora:
+-++ Sunflora:
     Gender: Default
     Encounter Rate: 20%
     Minimum Level: 25
@@ -680,7 +682,7 @@ Sunflora:
     Time: Morning, Noon, Evening
     Version: Scarlet, Violet
     Held Item: None
-Wooper-1:
+-++ Wooper-1:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 5
@@ -690,7 +692,7 @@ Wooper-1:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Espeon:
+-++ Espeon:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 35
@@ -700,7 +702,7 @@ Espeon:
     Time: Morning, Noon, Evening
     Version: Scarlet, Violet
     Held Item: None
-Umbreon:
+-++ Umbreon:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 35
@@ -710,7 +712,7 @@ Umbreon:
     Time: Night
     Version: Scarlet, Violet
     Held Item: None
-Murkrow:
+-++ Murkrow:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 15
@@ -720,7 +722,7 @@ Murkrow:
     Time: Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Misdreavus:
+-++ Misdreavus:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 10
@@ -730,7 +732,7 @@ Misdreavus:
     Time: Night
     Version: Violet
     Held Item: None
-Girafarig:
+-++ Girafarig:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 20
@@ -740,7 +742,7 @@ Girafarig:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Girafarig:
+-++ Girafarig:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 20
@@ -750,7 +752,7 @@ Girafarig:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Pineco:
+-++ Pineco:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 17
@@ -760,7 +762,7 @@ Pineco:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Forretress:
+-++ Forretress:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 45
@@ -770,7 +772,7 @@ Forretress:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Dunsparce:
+-++ Dunsparce:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 15
@@ -780,7 +782,7 @@ Dunsparce:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Dunsparce:
+-++ Dunsparce:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 15
@@ -790,7 +792,7 @@ Dunsparce:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Dunsparce:
+-++ Dunsparce:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 15
@@ -800,7 +802,7 @@ Dunsparce:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Qwilfish:
+-++ Qwilfish:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 15
@@ -810,7 +812,7 @@ Qwilfish:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Heracross:
+-++ Heracross:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 45
@@ -820,7 +822,7 @@ Heracross:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Sneasel:
+-++ Sneasel:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 15
@@ -830,7 +832,7 @@ Sneasel:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Sneasel:
+-++ Sneasel:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 15
@@ -840,7 +842,7 @@ Sneasel:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Teddiursa:
+-++ Teddiursa:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 16
@@ -850,7 +852,7 @@ Teddiursa:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Honey (5%)
-Ursaring:
+-++ Ursaring:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 30
@@ -860,7 +862,7 @@ Ursaring:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Delibird:
+-++ Delibird:
     Gender: Default
     Encounter Rate: 20%
     Minimum Level: 15
@@ -870,7 +872,7 @@ Delibird:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Houndour:
+-++ Houndour:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 2
@@ -880,7 +882,7 @@ Houndour:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Houndoom:
+-++ Houndoom:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 24
@@ -890,7 +892,7 @@ Houndoom:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Phanpy:
+-++ Phanpy:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 11
@@ -900,7 +902,7 @@ Phanpy:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Donphan:
+-++ Donphan:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 25
@@ -910,7 +912,7 @@ Donphan:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Donphan:
+-++ Donphan:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 25
@@ -920,7 +922,7 @@ Donphan:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Donphan:
+-++ Donphan:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 25
@@ -930,7 +932,7 @@ Donphan:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Stantler:
+-++ Stantler:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 15
@@ -940,7 +942,7 @@ Stantler:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Blissey:
+-++ Blissey:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 45
@@ -950,7 +952,7 @@ Blissey:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Oval Stone (30%)
-Larvitar:
+-++ Larvitar:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 16
@@ -960,7 +962,7 @@ Larvitar:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet
     Held Item: None
-Larvitar:
+-++ Larvitar:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 16
@@ -970,7 +972,7 @@ Larvitar:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet
     Held Item: None
-Larvitar:
+-++ Larvitar:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 16
@@ -980,7 +982,7 @@ Larvitar:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet
     Held Item: None
-Pupitar:
+-++ Pupitar:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 42
@@ -990,7 +992,7 @@ Pupitar:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet
     Held Item: None
-Wingull:
+-++ Wingull:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 2
@@ -1000,7 +1002,7 @@ Wingull:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Pelipper:
+-++ Pelipper:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 32
@@ -1010,7 +1012,7 @@ Pelipper:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Ralts:
+-++ Ralts:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 5
@@ -1020,7 +1022,7 @@ Ralts:
     Time: Morning, Noon, Evening
     Version: Scarlet, Violet
     Held Item: None
-Kirlia:
+-++ Kirlia:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 20
@@ -1030,7 +1032,7 @@ Kirlia:
     Time: Morning, Noon, Evening
     Version: Scarlet, Violet
     Held Item: None
-Gardevoir:
+-++ Gardevoir:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 36
@@ -1040,7 +1042,7 @@ Gardevoir:
     Time: Morning, Noon, Evening
     Version: Scarlet, Violet
     Held Item: None
-Surskit:
+-++ Surskit:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 8
@@ -1050,7 +1052,7 @@ Surskit:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Honey (5%)
-Masquerain:
+-++ Masquerain:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 23
@@ -1060,7 +1062,7 @@ Masquerain:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Masquerain:
+-++ Masquerain:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 23
@@ -1070,7 +1072,7 @@ Masquerain:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Shroomish:
+-++ Shroomish:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 9
@@ -1080,7 +1082,7 @@ Shroomish:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Tiny Mushroom (5%)
-Breloom:
+-++ Breloom:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 32
@@ -1090,7 +1092,7 @@ Breloom:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Tiny Mushroom (30%)
-Slakoth:
+-++ Slakoth:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 7
@@ -1100,7 +1102,7 @@ Slakoth:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Vigoroth:
+-++ Vigoroth:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 22
@@ -1110,7 +1112,7 @@ Vigoroth:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Slaking:
+-++ Slaking:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 52
@@ -1120,7 +1122,7 @@ Slaking:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Makuhita:
+-++ Makuhita:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 10
@@ -1130,7 +1132,7 @@ Makuhita:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Hariyama:
+-++ Hariyama:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 27
@@ -1140,7 +1142,7 @@ Hariyama:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Azurill:
+-++ Azurill:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 5
@@ -1150,7 +1152,7 @@ Azurill:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Sableye:
+-++ Sableye:
     Gender: Default
     Encounter Rate: 20%
     Minimum Level: 15
@@ -1160,7 +1162,7 @@ Sableye:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Meditite:
+-++ Meditite:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 20
@@ -1170,7 +1172,7 @@ Meditite:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Medicham:
+-++ Medicham:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 40
@@ -1180,7 +1182,7 @@ Medicham:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Medicham:
+-++ Medicham:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 40
@@ -1190,7 +1192,7 @@ Medicham:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Gulpin:
+-++ Gulpin:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 12
@@ -1200,7 +1202,7 @@ Gulpin:
     Time: Morning, Noon, Evening, Night
     Version: Violet
     Held Item: Oran Berry (30%)
-Swalot:
+-++ Swalot:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 45
@@ -1210,7 +1212,7 @@ Swalot:
     Time: Morning, Noon, Evening, Night
     Version: Violet
     Held Item: Sitrus Berry (5%)
-Numel:
+-++ Numel:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 18
@@ -1220,7 +1222,7 @@ Numel:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Camerupt:
+-++ Camerupt:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 33
@@ -1230,7 +1232,7 @@ Camerupt:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Camerupt:
+-++ Camerupt:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 33
@@ -1240,7 +1242,7 @@ Camerupt:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Torkoal:
+-++ Torkoal:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 28
@@ -1250,7 +1252,7 @@ Torkoal:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Spoink:
+-++ Spoink:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 10
@@ -1260,7 +1262,7 @@ Spoink:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Grumpig:
+-++ Grumpig:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 32
@@ -1270,7 +1272,7 @@ Grumpig:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Cacnea:
+-++ Cacnea:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 18
@@ -1280,7 +1282,7 @@ Cacnea:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Cacturne:
+-++ Cacturne:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 32
@@ -1290,7 +1292,7 @@ Cacturne:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Swablu:
+-++ Swablu:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 18
@@ -1300,7 +1302,7 @@ Swablu:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Altaria:
+-++ Altaria:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 40
@@ -1310,7 +1312,7 @@ Altaria:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Altaria:
+-++ Altaria:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 40
@@ -1320,7 +1322,7 @@ Altaria:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Zangoose:
+-++ Zangoose:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 20
@@ -1330,7 +1332,7 @@ Zangoose:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Seviper:
+-++ Seviper:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 20
@@ -1340,7 +1342,7 @@ Seviper:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Barboach:
+-++ Barboach:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 16
@@ -1350,7 +1352,7 @@ Barboach:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Whiscash:
+-++ Whiscash:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 30
@@ -1360,7 +1362,7 @@ Whiscash:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Shuppet:
+-++ Shuppet:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 16
@@ -1370,7 +1372,7 @@ Shuppet:
     Time: Night
     Version: Scarlet, Violet
     Held Item: None
-Banette:
+-++ Banette:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 37
@@ -1380,7 +1382,7 @@ Banette:
     Time: Night
     Version: Scarlet, Violet
     Held Item: None
-Tropius:
+-++ Tropius:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 20
@@ -1390,7 +1392,7 @@ Tropius:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Snorunt:
+-++ Snorunt:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 15
@@ -1400,7 +1402,7 @@ Snorunt:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Glalie:
+-++ Glalie:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 42
@@ -1410,7 +1412,7 @@ Glalie:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Luvdisc:
+-++ Luvdisc:
     Gender: Default
     Encounter Rate: 20%
     Minimum Level: 15
@@ -1420,7 +1422,7 @@ Luvdisc:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Bagon:
+-++ Bagon:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 16
@@ -1430,7 +1432,7 @@ Bagon:
     Time: Morning, Noon, Evening, Night
     Version: Violet
     Held Item: None
-Bagon:
+-++ Bagon:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 16
@@ -1440,7 +1442,7 @@ Bagon:
     Time: Morning, Noon, Evening, Night
     Version: Violet
     Held Item: None
-Bagon:
+-++ Bagon:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 16
@@ -1450,7 +1452,7 @@ Bagon:
     Time: Morning, Noon, Evening, Night
     Version: Violet
     Held Item: None
-Shelgon:
+-++ Shelgon:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 42
@@ -1460,7 +1462,7 @@ Shelgon:
     Time: Morning, Noon, Evening, Night
     Version: Violet
     Held Item: None
-Starly:
+-++ Starly:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 7
@@ -1470,7 +1472,7 @@ Starly:
     Time: Morning, Noon, Evening
     Version: Scarlet, Violet
     Held Item: None
-Staravia:
+-++ Staravia:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 22
@@ -1480,7 +1482,7 @@ Staravia:
     Time: Morning, Noon, Evening
     Version: Scarlet, Violet
     Held Item: None
-Staraptor:
+-++ Staraptor:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 49
@@ -1490,7 +1492,7 @@ Staraptor:
     Time: Morning, Noon, Evening
     Version: Scarlet, Violet
     Held Item: None
-Kricketot:
+-++ Kricketot:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 5
@@ -1500,7 +1502,7 @@ Kricketot:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Kricketune:
+-++ Kricketune:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 14
@@ -1510,7 +1512,7 @@ Kricketune:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Shinx:
+-++ Shinx:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 7
@@ -1520,7 +1522,7 @@ Shinx:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Luxio:
+-++ Luxio:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 20
@@ -1530,7 +1532,7 @@ Luxio:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Luxray:
+-++ Luxray:
     Gender: Male
     Encounter Rate: 1%
     Minimum Level: 49
@@ -1540,7 +1542,7 @@ Luxray:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Luxray:
+-++ Luxray:
     Gender: Female
     Encounter Rate: 1%
     Minimum Level: 49
@@ -1550,7 +1552,7 @@ Luxray:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Combee:
+-++ Combee:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 5
@@ -1560,7 +1562,7 @@ Combee:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Honey (30%)
-Vespiquen:
+-++ Vespiquen:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 30
@@ -1570,7 +1572,7 @@ Vespiquen:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Pachirisu:
+-++ Pachirisu:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 18
@@ -1580,7 +1582,7 @@ Pachirisu:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Buizel:
+-++ Buizel:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 2
@@ -1590,7 +1592,7 @@ Buizel:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Floatzel:
+-++ Floatzel:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 28
@@ -1600,7 +1602,7 @@ Floatzel:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Shellos:
+-++ Shellos:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 16
@@ -1610,7 +1612,7 @@ Shellos:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Shellos-1:
+-++ Shellos-1:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 16
@@ -1620,7 +1622,7 @@ Shellos-1:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Gastrodon:
+-++ Gastrodon:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 30
@@ -1630,7 +1632,7 @@ Gastrodon:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Gastrodon-1:
+-++ Gastrodon-1:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 30
@@ -1640,7 +1642,7 @@ Gastrodon-1:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Drifloon:
+-++ Drifloon:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 14
@@ -1650,7 +1652,7 @@ Drifloon:
     Time: Evening, Night
     Version: Scarlet
     Held Item: None
-Drifblim:
+-++ Drifblim:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 28
@@ -1660,7 +1662,7 @@ Drifblim:
     Time: Evening, Night
     Version: Scarlet
     Held Item: None
-Mismagius:
+-++ Mismagius:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 40
@@ -1670,7 +1672,7 @@ Mismagius:
     Time: Night
     Version: Violet
     Held Item: None
-Honchkrow:
+-++ Honchkrow:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 35
@@ -1680,7 +1682,7 @@ Honchkrow:
     Time: Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Stunky:
+-++ Stunky:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 20
@@ -1690,7 +1692,7 @@ Stunky:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet
     Held Item: None
-Skuntank:
+-++ Skuntank:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 40
@@ -1700,7 +1702,7 @@ Skuntank:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet
     Held Item: None
-Bronzor:
+-++ Bronzor:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 9
@@ -1710,7 +1712,7 @@ Bronzor:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Bronzong:
+-++ Bronzong:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 33
@@ -1720,7 +1722,7 @@ Bronzong:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Bonsly:
+-++ Bonsly:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 5
@@ -1730,7 +1732,7 @@ Bonsly:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Happiny:
+-++ Happiny:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 5
@@ -1740,7 +1742,7 @@ Happiny:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Oval Stone (5%)
-Gible:
+-++ Gible:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 10
@@ -1750,7 +1752,7 @@ Gible:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Gabite:
+-++ Gabite:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 32
@@ -1760,7 +1762,7 @@ Gabite:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Riolu:
+-++ Riolu:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 12
@@ -1770,7 +1772,7 @@ Riolu:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Lucario:
+-++ Lucario:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 45
@@ -1780,7 +1782,7 @@ Lucario:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Hippopotas:
+-++ Hippopotas:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 20
@@ -1790,7 +1792,7 @@ Hippopotas:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Hippowdon:
+-++ Hippowdon:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 34
@@ -1800,7 +1802,7 @@ Hippowdon:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Croagunk:
+-++ Croagunk:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 16
@@ -1810,7 +1812,7 @@ Croagunk:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Toxicroak:
+-++ Toxicroak:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 37
@@ -1820,7 +1822,7 @@ Toxicroak:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Finneon:
+-++ Finneon:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 17
@@ -1830,7 +1832,7 @@ Finneon:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Lumineon:
+-++ Lumineon:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 31
@@ -1840,7 +1842,7 @@ Lumineon:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Snover:
+-++ Snover:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 26
@@ -1850,7 +1852,7 @@ Snover:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Abomasnow:
+-++ Abomasnow:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 40
@@ -1860,7 +1862,7 @@ Abomasnow:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Weavile:
+-++ Weavile:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 37
@@ -1870,7 +1872,7 @@ Weavile:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Weavile:
+-++ Weavile:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 37
@@ -1880,7 +1882,7 @@ Weavile:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Leafeon:
+-++ Leafeon:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 35
@@ -1890,7 +1892,7 @@ Leafeon:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Glaceon:
+-++ Glaceon:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 35
@@ -1900,7 +1902,7 @@ Glaceon:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Gallade:
+-++ Gallade:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 35
@@ -1910,7 +1912,7 @@ Gallade:
     Time: Morning, Noon, Evening
     Version: Scarlet, Violet
     Held Item: None
-Froslass:
+-++ Froslass:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 39
@@ -1920,7 +1922,7 @@ Froslass:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Rotom:
+-++ Rotom:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 20
@@ -1930,7 +1932,7 @@ Rotom:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Petilil:
+-++ Petilil:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 13
@@ -1940,7 +1942,7 @@ Petilil:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Lilligant:
+-++ Lilligant:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 30
@@ -1950,7 +1952,7 @@ Lilligant:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Basculin:
+-++ Basculin:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 15
@@ -1960,7 +1962,7 @@ Basculin:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Basculin-1:
+-++ Basculin-1:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 15
@@ -1970,7 +1972,7 @@ Basculin-1:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Sandile:
+-++ Sandile:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 15
@@ -1980,7 +1982,7 @@ Sandile:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Krokorok:
+-++ Krokorok:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 29
@@ -1990,7 +1992,7 @@ Krokorok:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Zorua:
+-++ Zorua:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 16
@@ -2000,7 +2002,7 @@ Zorua:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Zoroark:
+-++ Zoroark:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 45
@@ -2010,7 +2012,7 @@ Zoroark:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Gothita:
+-++ Gothita:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 18
@@ -2020,7 +2022,7 @@ Gothita:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Gothorita:
+-++ Gothorita:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 32
@@ -2030,7 +2032,7 @@ Gothorita:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Gothitelle:
+-++ Gothitelle:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 41
@@ -2040,7 +2042,7 @@ Gothitelle:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Deerling:
+-++ Deerling:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 16
@@ -2050,7 +2052,7 @@ Deerling:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Deerling-1:
+-++ Deerling-1:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 16
@@ -2060,7 +2062,7 @@ Deerling-1:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Deerling-2:
+-++ Deerling-2:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 16
@@ -2070,7 +2072,7 @@ Deerling-2:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Deerling-3:
+-++ Deerling-3:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 16
@@ -2080,7 +2082,7 @@ Deerling-3:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Sawsbuck:
+-++ Sawsbuck:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 34
@@ -2090,7 +2092,7 @@ Sawsbuck:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Sawsbuck-1:
+-++ Sawsbuck-1:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 34
@@ -2100,7 +2102,7 @@ Sawsbuck-1:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Sawsbuck-2:
+-++ Sawsbuck-2:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 34
@@ -2110,7 +2112,7 @@ Sawsbuck-2:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Sawsbuck-3:
+-++ Sawsbuck-3:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 34
@@ -2120,7 +2122,7 @@ Sawsbuck-3:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Foongus:
+-++ Foongus:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 25
@@ -2130,7 +2132,7 @@ Foongus:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Tiny Mushroom (5%)
-Amoonguss:
+-++ Amoonguss:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 51
@@ -2140,7 +2142,7 @@ Amoonguss:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Tiny Mushroom (30%)
-Alomomola:
+-++ Alomomola:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 20
@@ -2150,7 +2152,7 @@ Alomomola:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Tynamo:
+-++ Tynamo:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 25
@@ -2160,7 +2162,7 @@ Tynamo:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Eelektrik:
+-++ Eelektrik:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 39
@@ -2170,7 +2172,7 @@ Eelektrik:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Axew:
+-++ Axew:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 16
@@ -2180,7 +2182,7 @@ Axew:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Fraxure:
+-++ Fraxure:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 38
@@ -2190,7 +2192,7 @@ Fraxure:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Cubchoo:
+-++ Cubchoo:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 23
@@ -2200,7 +2202,7 @@ Cubchoo:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Beartic:
+-++ Beartic:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 40
@@ -2210,7 +2212,7 @@ Beartic:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Cryogonal:
+-++ Cryogonal:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 30
@@ -2220,7 +2222,7 @@ Cryogonal:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Pawniard:
+-++ Pawniard:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 22
@@ -2230,7 +2232,7 @@ Pawniard:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Bisharp:
+-++ Bisharp:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 52
@@ -2240,7 +2242,7 @@ Bisharp:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Leaderâ€™s Crest (100%)
-Bisharp:
+-++ Bisharp:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 52
@@ -2250,7 +2252,7 @@ Bisharp:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Bisharp:
+-++ Bisharp:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 52
@@ -2260,7 +2262,7 @@ Bisharp:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Leaderâ€™s Crest (100%)
-Bisharp:
+-++ Bisharp:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 52
@@ -2270,7 +2272,7 @@ Bisharp:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Rufflet:
+-++ Rufflet:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 21
@@ -2280,7 +2282,7 @@ Rufflet:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Braviary:
+-++ Braviary:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 54
@@ -2290,7 +2292,7 @@ Braviary:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Braviary:
+-++ Braviary:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 54
@@ -2300,7 +2302,7 @@ Braviary:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Deino:
+-++ Deino:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 36
@@ -2310,7 +2312,7 @@ Deino:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet
     Held Item: None
-Zweilous:
+-++ Zweilous:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 50
@@ -2320,7 +2322,7 @@ Zweilous:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet
     Held Item: None
-Larvesta:
+-++ Larvesta:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 24
@@ -2330,7 +2332,7 @@ Larvesta:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Volcarona:
+-++ Volcarona:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 59
@@ -2340,7 +2342,7 @@ Volcarona:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Fletchling:
+-++ Fletchling:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 2
@@ -2350,7 +2352,7 @@ Fletchling:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Fletchinder:
+-++ Fletchinder:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 17
@@ -2360,7 +2362,7 @@ Fletchinder:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Talonflame:
+-++ Talonflame:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 17
@@ -2370,7 +2372,7 @@ Talonflame:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Scatterbug-18:
+-++ Scatterbug-18:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 4
@@ -2380,7 +2382,7 @@ Scatterbug-18:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Spewpa-18:
+-++ Spewpa-18:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 8
@@ -2390,7 +2392,7 @@ Spewpa-18:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Vivillon-18:
+-++ Vivillon-18:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 25
@@ -2400,7 +2402,7 @@ Vivillon-18:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Litleo:
+-++ Litleo:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 18
@@ -2410,7 +2412,7 @@ Litleo:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Pyroar:
+-++ Pyroar:
     Gender: Male
     Encounter Rate: 10%
     Minimum Level: 35
@@ -2420,7 +2422,7 @@ Pyroar:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Pyroar:
+-++ Pyroar:
     Gender: Male
     Encounter Rate: 10%
     Minimum Level: 35
@@ -2430,7 +2432,7 @@ Pyroar:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Pyroar:
+-++ Pyroar:
     Gender: Female
     Encounter Rate: 20%
     Minimum Level: 35
@@ -2440,7 +2442,7 @@ Pyroar:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-FlabÃ©bÃ©:
+-++ FlabÃ©bÃ©:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 10
@@ -2450,7 +2452,7 @@ FlabÃ©bÃ©:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-FlabÃ©bÃ©-1:
+-++ FlabÃ©bÃ©-1:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 10
@@ -2460,7 +2462,7 @@ FlabÃ©bÃ©-1:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-FlabÃ©bÃ©-2:
+-++ FlabÃ©bÃ©-2:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 10
@@ -2470,7 +2472,7 @@ FlabÃ©bÃ©-2:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-FlabÃ©bÃ©-3:
+-++ FlabÃ©bÃ©-3:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 10
@@ -2480,7 +2482,7 @@ FlabÃ©bÃ©-3:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-FlabÃ©bÃ©-4:
+-++ FlabÃ©bÃ©-4:
     Gender: Default
     Encounter Rate: 5%
     Minimum Level: 10
@@ -2490,7 +2492,7 @@ FlabÃ©bÃ©-4:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Floette:
+-++ Floette:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 19
@@ -2500,7 +2502,7 @@ Floette:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Floette-1:
+-++ Floette-1:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 19
@@ -2510,7 +2512,7 @@ Floette-1:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Floette-2:
+-++ Floette-2:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 19
@@ -2520,7 +2522,7 @@ Floette-2:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Floette-3:
+-++ Floette-3:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 19
@@ -2530,7 +2532,7 @@ Floette-3:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Floette-4:
+-++ Floette-4:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 19
@@ -2540,7 +2542,7 @@ Floette-4:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Floette:
+-++ Floette:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 19
@@ -2550,7 +2552,7 @@ Floette:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Floette-1:
+-++ Floette-1:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 19
@@ -2560,7 +2562,7 @@ Floette-1:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Floette-2:
+-++ Floette-2:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 19
@@ -2570,7 +2572,7 @@ Floette-2:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Floette-3:
+-++ Floette-3:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 19
@@ -2580,7 +2582,7 @@ Floette-3:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Floette-4:
+-++ Floette-4:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 19
@@ -2590,7 +2592,7 @@ Floette-4:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Florges:
+-++ Florges:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 46
@@ -2600,7 +2602,7 @@ Florges:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Florges-1:
+-++ Florges-1:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 46
@@ -2610,7 +2612,7 @@ Florges-1:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Florges-2:
+-++ Florges-2:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 46
@@ -2620,7 +2622,7 @@ Florges-2:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Florges-3:
+-++ Florges-3:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 46
@@ -2630,7 +2632,7 @@ Florges-3:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Florges-4:
+-++ Florges-4:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 46
@@ -2640,7 +2642,7 @@ Florges-4:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Skiddo:
+-++ Skiddo:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 14
@@ -2650,7 +2652,7 @@ Skiddo:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Gogoat:
+-++ Gogoat:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 32
@@ -2660,7 +2662,7 @@ Gogoat:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Skrelp:
+-++ Skrelp:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 34
@@ -2670,7 +2672,7 @@ Skrelp:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet
     Held Item: None
-Dragalge:
+-++ Dragalge:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 48
@@ -2680,7 +2682,7 @@ Dragalge:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet
     Held Item: None
-Clauncher:
+-++ Clauncher:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 23
@@ -2690,7 +2692,7 @@ Clauncher:
     Time: Morning, Noon, Evening, Night
     Version: Violet
     Held Item: None
-Clawitzer:
+-++ Clawitzer:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 37
@@ -2700,7 +2702,7 @@ Clawitzer:
     Time: Morning, Noon, Evening, Night
     Version: Violet
     Held Item: None
-Sylveon:
+-++ Sylveon:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 35
@@ -2710,7 +2712,7 @@ Sylveon:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Hawlucha:
+-++ Hawlucha:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 45
@@ -2720,7 +2722,7 @@ Hawlucha:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Dedenne:
+-++ Dedenne:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 20
@@ -2730,7 +2732,7 @@ Dedenne:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Goomy:
+-++ Goomy:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 15
@@ -2740,7 +2742,7 @@ Goomy:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Sliggoo:
+-++ Sliggoo:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 40
@@ -2750,7 +2752,7 @@ Sliggoo:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Klefki:
+-++ Klefki:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 36
@@ -2760,7 +2762,7 @@ Klefki:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Bergmite:
+-++ Bergmite:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 23
@@ -2770,7 +2772,7 @@ Bergmite:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Bergmite:
+-++ Bergmite:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 23
@@ -2780,7 +2782,7 @@ Bergmite:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Avalugg:
+-++ Avalugg:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 37
@@ -2790,7 +2792,7 @@ Avalugg:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Avalugg:
+-++ Avalugg:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 37
@@ -2800,7 +2802,7 @@ Avalugg:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Noibat:
+-++ Noibat:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 15
@@ -2810,7 +2812,7 @@ Noibat:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Noibat:
+-++ Noibat:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 34
@@ -2820,7 +2822,7 @@ Noibat:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Noivern:
+-++ Noivern:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 48
@@ -2830,7 +2832,7 @@ Noivern:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Yungoos:
+-++ Yungoos:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 2
@@ -2840,7 +2842,7 @@ Yungoos:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Pecha Berry (5%)
-Gumshoos:
+-++ Gumshoos:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 20
@@ -2850,7 +2852,7 @@ Gumshoos:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Pecha Berry (5%)
-Crabrawler:
+-++ Crabrawler:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 10
@@ -2860,7 +2862,7 @@ Crabrawler:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Aspear Berry (5%)
-Crabominable:
+-++ Crabominable:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 38
@@ -2870,7 +2872,7 @@ Crabominable:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Cheri Berry (5%)
-Oricorio:
+-++ Oricorio:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 10
@@ -2880,7 +2882,7 @@ Oricorio:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Red Nectar (5%)
-Oricorio-1:
+-++ Oricorio-1:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 5
@@ -2890,7 +2892,7 @@ Oricorio-1:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Yellow Nectar (5%)
-Rockruff:
+-++ Rockruff:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 6
@@ -2900,7 +2902,7 @@ Rockruff:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Rockruff-1:
+-++ Rockruff-1:
     Gender: Default
     Encounter Rate: 6%
     Minimum Level: 6
@@ -2910,7 +2912,7 @@ Rockruff-1:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Lycanroc:
+-++ Lycanroc:
     Gender: Default
     Encounter Rate: 20%
     Minimum Level: 34
@@ -2920,7 +2922,7 @@ Lycanroc:
     Time: Morning, Noon
     Version: Scarlet, Violet
     Held Item: None
-Lycanroc-1:
+-++ Lycanroc-1:
     Gender: Default
     Encounter Rate: 20%
     Minimum Level: 34
@@ -2930,7 +2932,7 @@ Lycanroc-1:
     Time: Night
     Version: Scarlet, Violet
     Held Item: None
-Lycanroc-2:
+-++ Lycanroc-2:
     Gender: Default
     Encounter Rate: 4%
     Minimum Level: 46
@@ -2940,7 +2942,7 @@ Lycanroc-2:
     Time: Evening
     Version: Scarlet, Violet
     Held Item: None
-Lycanroc:
+-++ Lycanroc:
     Gender: Default
     Encounter Rate: 20%
     Minimum Level: 34
@@ -2950,7 +2952,7 @@ Lycanroc:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Lycanroc-1:
+-++ Lycanroc-1:
     Gender: Default
     Encounter Rate: 20%
     Minimum Level: 34
@@ -2960,7 +2962,7 @@ Lycanroc-1:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Mareanie:
+-++ Mareanie:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 16
@@ -2970,7 +2972,7 @@ Mareanie:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Toxapex:
+-++ Toxapex:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 38
@@ -2980,7 +2982,7 @@ Toxapex:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Mudbray:
+-++ Mudbray:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 16
@@ -2990,7 +2992,7 @@ Mudbray:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Mudsdale:
+-++ Mudsdale:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 30
@@ -3000,7 +3002,7 @@ Mudsdale:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Fomantis:
+-++ Fomantis:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 16
@@ -3010,7 +3012,7 @@ Fomantis:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Lurantis:
+-++ Lurantis:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 34
@@ -3020,7 +3022,7 @@ Lurantis:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Lurantis:
+-++ Lurantis:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 34
@@ -3030,7 +3032,7 @@ Lurantis:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Salandit:
+-++ Salandit:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 10
@@ -3040,7 +3042,7 @@ Salandit:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Salazzle:
+-++ Salazzle:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 33
@@ -3050,7 +3052,7 @@ Salazzle:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Bounsweet:
+-++ Bounsweet:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 5
@@ -3060,7 +3062,7 @@ Bounsweet:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Steenee:
+-++ Steenee:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 21
@@ -3070,7 +3072,7 @@ Steenee:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Oranguru:
+-++ Oranguru:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 25
@@ -3080,7 +3082,7 @@ Oranguru:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet
     Held Item: None
-Passimian:
+-++ Passimian:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 25
@@ -3090,7 +3092,7 @@ Passimian:
     Time: Morning, Noon, Evening, Night
     Version: Violet
     Held Item: None
-Sandygast:
+-++ Sandygast:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 16
@@ -3100,7 +3102,7 @@ Sandygast:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Palossand:
+-++ Palossand:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 42
@@ -3110,7 +3112,7 @@ Palossand:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Komala:
+-++ Komala:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 20
@@ -3120,7 +3122,7 @@ Komala:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Mimikyu:
+-++ Mimikyu:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 19
@@ -3130,7 +3132,7 @@ Mimikyu:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Chesto Berry (5%)
-Mimikyu:
+-++ Mimikyu:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 31
@@ -3140,7 +3142,7 @@ Mimikyu:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Chesto Berry (5%)
-Bruxish:
+-++ Bruxish:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 20
@@ -3150,7 +3152,7 @@ Bruxish:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Skwovet:
+-++ Skwovet:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 5
@@ -3160,7 +3162,7 @@ Skwovet:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Oran Berry (5%)
-Greedent:
+-++ Greedent:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 24
@@ -3170,7 +3172,7 @@ Greedent:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Sitrus Berry (5%)
-Rookidee:
+-++ Rookidee:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 5
@@ -3180,7 +3182,7 @@ Rookidee:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Corvisquire:
+-++ Corvisquire:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 18
@@ -3190,7 +3192,7 @@ Corvisquire:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Corviknight:
+-++ Corviknight:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 18
@@ -3200,7 +3202,7 @@ Corviknight:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Chewtle:
+-++ Chewtle:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 10
@@ -3210,7 +3212,7 @@ Chewtle:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Chewtle:
+-++ Chewtle:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 5
@@ -3220,7 +3222,7 @@ Chewtle:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Drednaw:
+-++ Drednaw:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 22
@@ -3230,7 +3232,7 @@ Drednaw:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Drednaw:
+-++ Drednaw:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 49
@@ -3240,7 +3242,7 @@ Drednaw:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Rolycoly:
+-++ Rolycoly:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 5
@@ -3250,7 +3252,7 @@ Rolycoly:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Carkol:
+-++ Carkol:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 25
@@ -3260,7 +3262,7 @@ Carkol:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Applin:
+-++ Applin:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 10
@@ -3270,7 +3272,7 @@ Applin:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Silicobra:
+-++ Silicobra:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 22
@@ -3280,7 +3282,7 @@ Silicobra:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Sandaconda:
+-++ Sandaconda:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 36
@@ -3290,7 +3292,7 @@ Sandaconda:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Arrokuda:
+-++ Arrokuda:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 2
@@ -3300,7 +3302,7 @@ Arrokuda:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Barraskewda:
+-++ Barraskewda:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 26
@@ -3310,7 +3312,7 @@ Barraskewda:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Toxel:
+-++ Toxel:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 10
@@ -3320,7 +3322,7 @@ Toxel:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Toxtricity:
+-++ Toxtricity:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 30
@@ -3330,7 +3332,7 @@ Toxtricity:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Toxtricity-1:
+-++ Toxtricity-1:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 30
@@ -3340,7 +3342,7 @@ Toxtricity-1:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Sinistea:
+-++ Sinistea:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 28
@@ -3350,7 +3352,7 @@ Sinistea:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Sinistea-1:
+-++ Sinistea-1:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 28
@@ -3360,7 +3362,7 @@ Sinistea-1:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Hatenna:
+-++ Hatenna:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 16
@@ -3370,7 +3372,7 @@ Hatenna:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Hattrem:
+-++ Hattrem:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 32
@@ -3380,7 +3382,7 @@ Hattrem:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Impidimp:
+-++ Impidimp:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 16
@@ -3390,7 +3392,7 @@ Impidimp:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Morgrem:
+-++ Morgrem:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 32
@@ -3400,7 +3402,7 @@ Morgrem:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Falinks:
+-++ Falinks:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 13
@@ -3410,7 +3412,7 @@ Falinks:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Pincurchin:
+-++ Pincurchin:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 20
@@ -3420,7 +3422,7 @@ Pincurchin:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Snom:
+-++ Snom:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 10
@@ -3430,7 +3432,7 @@ Snom:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Frosmoth:
+-++ Frosmoth:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 42
@@ -3440,7 +3442,7 @@ Frosmoth:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Frosmoth:
+-++ Frosmoth:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 42
@@ -3450,7 +3452,7 @@ Frosmoth:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Stonjourner:
+-++ Stonjourner:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 20
@@ -3460,7 +3462,7 @@ Stonjourner:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet
     Held Item: None
-Eiscue:
+-++ Eiscue:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 20
@@ -3470,7 +3472,7 @@ Eiscue:
     Time: Morning, Noon, Evening, Night
     Version: Violet
     Held Item: None
-Indeedee:
+-++ Indeedee:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 40
@@ -3480,7 +3482,7 @@ Indeedee:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Indeedee-1:
+-++ Indeedee-1:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 40
@@ -3490,7 +3492,7 @@ Indeedee-1:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Cufant:
+-++ Cufant:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 17
@@ -3500,7 +3502,7 @@ Cufant:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Copperajah:
+-++ Copperajah:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 40
@@ -3510,7 +3512,7 @@ Copperajah:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Dreepy:
+-++ Dreepy:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 20
@@ -3520,7 +3522,7 @@ Dreepy:
     Time: Morning, Noon, Evening, Night
     Version: Violet
     Held Item: None
-Drakloak:
+-++ Drakloak:
     Gender: Default
     Encounter Rate: 30%
     Minimum Level: 50
@@ -3530,7 +3532,7 @@ Drakloak:
     Time: Morning, Noon, Evening, Night
     Version: Violet
     Held Item: None
-Lechonk:
+-++ Lechonk:
     Gender: Default
     Encounter Rate: 72%
     Minimum Level: 2
@@ -3540,7 +3542,7 @@ Lechonk:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Oinkologne:
+-++ Oinkologne:
     Gender: Default
     Encounter Rate: 48%
     Minimum Level: 18
@@ -3550,7 +3552,7 @@ Oinkologne:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Oinkologne-1:
+-++ Oinkologne-1:
     Gender: Default
     Encounter Rate: 48%
     Minimum Level: 18
@@ -3560,7 +3562,7 @@ Oinkologne-1:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Dudunsparce:
+-++ Dudunsparce:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 15
@@ -3570,7 +3572,7 @@ Dudunsparce:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Tarountula:
+-++ Tarountula:
     Gender: Default
     Encounter Rate: 70%
     Minimum Level: 2
@@ -3580,7 +3582,7 @@ Tarountula:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Spidops:
+-++ Spidops:
     Gender: Default
     Encounter Rate: 40%
     Minimum Level: 20
@@ -3590,7 +3592,7 @@ Spidops:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Nymble:
+-++ Nymble:
     Gender: Default
     Encounter Rate: 72%
     Minimum Level: 14
@@ -3600,7 +3602,7 @@ Nymble:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Lokix:
+-++ Lokix:
     Gender: Default
     Encounter Rate: 48%
     Minimum Level: 24
@@ -3610,7 +3612,7 @@ Lokix:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Rellor:
+-++ Rellor:
     Gender: Default
     Encounter Rate: 72%
     Minimum Level: 26
@@ -3620,7 +3622,7 @@ Rellor:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Rabsca:
+-++ Rabsca:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 35
@@ -3630,7 +3632,7 @@ Rabsca:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Greavard:
+-++ Greavard:
     Gender: Default
     Encounter Rate: 72%
     Minimum Level: 22
@@ -3640,7 +3642,7 @@ Greavard:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Greavard:
+-++ Greavard:
     Gender: Default
     Encounter Rate: 72%
     Minimum Level: 25
@@ -3650,7 +3652,7 @@ Greavard:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Houndstone:
+-++ Houndstone:
     Gender: Default
     Encounter Rate: 48%
     Minimum Level: 42
@@ -3660,7 +3662,7 @@ Houndstone:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Flittle:
+-++ Flittle:
     Gender: Default
     Encounter Rate: 72%
     Minimum Level: 17
@@ -3670,7 +3672,7 @@ Flittle:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Espathra:
+-++ Espathra:
     Gender: Default
     Encounter Rate: 48%
     Minimum Level: 35
@@ -3680,7 +3682,7 @@ Espathra:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Farigiraf:
+-++ Farigiraf:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 20
@@ -3690,7 +3692,7 @@ Farigiraf:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Wiglett:
+-++ Wiglett:
     Gender: Default
     Encounter Rate: 72%
     Minimum Level: 13
@@ -3700,7 +3702,7 @@ Wiglett:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Wugtrio:
+-++ Wugtrio:
     Gender: Default
     Encounter Rate: 48%
     Minimum Level: 26
@@ -3710,7 +3712,7 @@ Wugtrio:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Dondozo:
+-++ Dondozo:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 49
@@ -3720,7 +3722,7 @@ Dondozo:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Veluza:
+-++ Veluza:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 25
@@ -3730,7 +3732,7 @@ Veluza:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Finizen:
+-++ Finizen:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 15
@@ -3740,7 +3742,7 @@ Finizen:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Smoliv:
+-++ Smoliv:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 7
@@ -3750,7 +3752,7 @@ Smoliv:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Dolliv:
+-++ Dolliv:
     Gender: Default
     Encounter Rate: 36%
     Minimum Level: 25
@@ -3760,7 +3762,7 @@ Dolliv:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Capsakid:
+-++ Capsakid:
     Gender: Default
     Encounter Rate: 72%
     Minimum Level: 16
@@ -3770,7 +3772,7 @@ Capsakid:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Scovillain:
+-++ Scovillain:
     Gender: Default
     Encounter Rate: 12%
     Minimum Level: 30
@@ -3780,7 +3782,7 @@ Scovillain:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Tadbulb:
+-++ Tadbulb:
     Gender: Default
     Encounter Rate: 72%
     Minimum Level: 12
@@ -3790,7 +3792,7 @@ Tadbulb:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Bellibolt:
+-++ Bellibolt:
     Gender: Default
     Encounter Rate: 12%
     Minimum Level: 35
@@ -3800,7 +3802,7 @@ Bellibolt:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Bellibolt:
+-++ Bellibolt:
     Gender: Default
     Encounter Rate: 12%
     Minimum Level: 35
@@ -3810,7 +3812,7 @@ Bellibolt:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Varoom:
+-++ Varoom:
     Gender: Default
     Encounter Rate: 72%
     Minimum Level: 27
@@ -3820,7 +3822,7 @@ Varoom:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Revavroom:
+-++ Revavroom:
     Gender: Default
     Encounter Rate: 48%
     Minimum Level: 40
@@ -3830,7 +3832,7 @@ Revavroom:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Orthworm:
+-++ Orthworm:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 22
@@ -3840,7 +3842,7 @@ Orthworm:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Tandemaus:
+-++ Tandemaus:
     Gender: Default
     Encounter Rate: 72%
     Minimum Level: 14
@@ -3850,7 +3852,7 @@ Tandemaus:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Tandemaus:
+-++ Tandemaus:
     Gender: Default
     Encounter Rate: 72%
     Minimum Level: 7
@@ -3860,7 +3862,7 @@ Tandemaus:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Cetoddle:
+-++ Cetoddle:
     Gender: Default
     Encounter Rate: 72%
     Minimum Level: 20
@@ -3870,7 +3872,7 @@ Cetoddle:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Cetitan:
+-++ Cetitan:
     Gender: Default
     Encounter Rate: 12%
     Minimum Level: 45
@@ -3880,7 +3882,7 @@ Cetitan:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Frigibax:
+-++ Frigibax:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 24
@@ -3890,7 +3892,7 @@ Frigibax:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Frigibax:
+-++ Frigibax:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 24
@@ -3900,7 +3902,7 @@ Frigibax:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Arctibax:
+-++ Arctibax:
     Gender: Default
     Encounter Rate: 36%
     Minimum Level: 35
@@ -3910,7 +3912,7 @@ Arctibax:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Tatsugiri:
+-++ Tatsugiri:
     Gender: Default
     Encounter Rate: 24%
     Minimum Level: 49
@@ -3920,7 +3922,7 @@ Tatsugiri:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Tatsugiri-1:
+-++ Tatsugiri-1:
     Gender: Default
     Encounter Rate: 24%
     Minimum Level: 49
@@ -3930,7 +3932,7 @@ Tatsugiri-1:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Tatsugiri-2:
+-++ Tatsugiri-2:
     Gender: Default
     Encounter Rate: 24%
     Minimum Level: 49
@@ -3940,7 +3942,7 @@ Tatsugiri-2:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Cyclizar:
+-++ Cyclizar:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 20
@@ -3950,7 +3952,7 @@ Cyclizar:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Pawmi:
+-++ Pawmi:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 2
@@ -3960,7 +3962,7 @@ Pawmi:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Pawmo:
+-++ Pawmo:
     Gender: Default
     Encounter Rate: 36%
     Minimum Level: 18
@@ -3970,7 +3972,7 @@ Pawmo:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Wattrel:
+-++ Wattrel:
     Gender: Default
     Encounter Rate: 72%
     Minimum Level: 14
@@ -3980,7 +3982,7 @@ Wattrel:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Wattrel:
+-++ Wattrel:
     Gender: Default
     Encounter Rate: 72%
     Minimum Level: 14
@@ -3990,7 +3992,7 @@ Wattrel:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Kilowattrel:
+-++ Kilowattrel:
     Gender: Default
     Encounter Rate: 48%
     Minimum Level: 28
@@ -4000,7 +4002,7 @@ Kilowattrel:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Bombirdier:
+-++ Bombirdier:
     Gender: Default
     Encounter Rate: 12%
     Minimum Level: 19
@@ -4010,7 +4012,7 @@ Bombirdier:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Squawkabilly:
+-++ Squawkabilly:
     Gender: Default
     Encounter Rate: 20%
     Minimum Level: 12
@@ -4020,7 +4022,7 @@ Squawkabilly:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Squawkabilly-1:
+-++ Squawkabilly-1:
     Gender: Default
     Encounter Rate: 15%
     Minimum Level: 12
@@ -4030,7 +4032,7 @@ Squawkabilly-1:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Squawkabilly-2:
+-++ Squawkabilly-2:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 12
@@ -4040,7 +4042,7 @@ Squawkabilly-2:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Squawkabilly-3:
+-++ Squawkabilly-3:
     Gender: Default
     Encounter Rate: 5%
     Minimum Level: 12
@@ -4050,7 +4052,7 @@ Squawkabilly-3:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Flamigo:
+-++ Flamigo:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 24
@@ -4060,7 +4062,7 @@ Flamigo:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Flamigo:
+-++ Flamigo:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 10
@@ -4070,7 +4072,7 @@ Flamigo:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Flamigo:
+-++ Flamigo:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 10
@@ -4080,7 +4082,7 @@ Flamigo:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Flamigo:
+-++ Flamigo:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 24
@@ -4090,7 +4092,7 @@ Flamigo:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Klawf:
+-++ Klawf:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 15
@@ -4100,7 +4102,7 @@ Klawf:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Nacli:
+-++ Nacli:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 10
@@ -4110,7 +4112,7 @@ Nacli:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Naclstack:
+-++ Naclstack:
     Gender: Default
     Encounter Rate: 36%
     Minimum Level: 31
@@ -4120,7 +4122,7 @@ Naclstack:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Naclstack:
+-++ Naclstack:
     Gender: Default
     Encounter Rate: 36%
     Minimum Level: 31
@@ -4130,7 +4132,7 @@ Naclstack:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Garganacl:
+-++ Garganacl:
     Gender: Default
     Encounter Rate: 36%
     Minimum Level: 31
@@ -4140,7 +4142,7 @@ Garganacl:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Glimmet:
+-++ Glimmet:
     Gender: Default
     Encounter Rate: 72%
     Minimum Level: 23
@@ -4150,7 +4152,7 @@ Glimmet:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Glimmora:
+-++ Glimmora:
     Gender: Default
     Encounter Rate: 48%
     Minimum Level: 35
@@ -4160,7 +4162,7 @@ Glimmora:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Shroodle:
+-++ Shroodle:
     Gender: Default
     Encounter Rate: 72%
     Minimum Level: 5
@@ -4170,7 +4172,7 @@ Shroodle:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Shroodle:
+-++ Shroodle:
     Gender: Default
     Encounter Rate: 72%
     Minimum Level: 5
@@ -4180,7 +4182,7 @@ Shroodle:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Grafaiai:
+-++ Grafaiai:
     Gender: Default
     Encounter Rate: 48%
     Minimum Level: 29
@@ -4190,7 +4192,7 @@ Grafaiai:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Fidough:
+-++ Fidough:
     Gender: Default
     Encounter Rate: 72%
     Minimum Level: 5
@@ -4200,7 +4202,7 @@ Fidough:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Dachsbun:
+-++ Dachsbun:
     Gender: Default
     Encounter Rate: 48%
     Minimum Level: 26
@@ -4210,7 +4212,7 @@ Dachsbun:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Maschiff:
+-++ Maschiff:
     Gender: Default
     Encounter Rate: 72%
     Minimum Level: 10
@@ -4220,7 +4222,7 @@ Maschiff:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Mabosstiff:
+-++ Mabosstiff:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 33
@@ -4230,7 +4232,7 @@ Mabosstiff:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Bramblin:
+-++ Bramblin:
     Gender: Default
     Encounter Rate: 72%
     Minimum Level: 25
@@ -4240,7 +4242,7 @@ Bramblin:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Brambleghast:
+-++ Brambleghast:
     Gender: Default
     Encounter Rate: 72%
     Minimum Level: 50
@@ -4250,7 +4252,7 @@ Brambleghast:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Great Tusk:
+-++ Great Tusk:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 52
@@ -4260,7 +4262,7 @@ Great Tusk:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet
     Held Item: Booster Energy (5%)
-Brute Bonnet:
+-++ Brute Bonnet:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 52
@@ -4270,7 +4272,7 @@ Brute Bonnet:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet
     Held Item: Booster Energy (5%)
-Sandy Shocks:
+-++ Sandy Shocks:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 52
@@ -4280,7 +4282,7 @@ Sandy Shocks:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet
     Held Item: Booster Energy (5%)
-Scream Tail:
+-++ Scream Tail:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 52
@@ -4290,7 +4292,7 @@ Scream Tail:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet
     Held Item: Booster Energy (5%)
-Scream Tail:
+-++ Scream Tail:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 52
@@ -4300,7 +4302,7 @@ Scream Tail:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet
     Held Item: None
-Flutter Mane:
+-++ Flutter Mane:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 52
@@ -4310,7 +4312,7 @@ Flutter Mane:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet
     Held Item: Booster Energy (5%)
-Slither Wing:
+-++ Slither Wing:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 52
@@ -4320,7 +4322,7 @@ Slither Wing:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet
     Held Item: Booster Energy (5%)
-Roaring Moon:
+-++ Roaring Moon:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 52
@@ -4330,7 +4332,7 @@ Roaring Moon:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet
     Held Item: Booster Energy (5%)
-Iron Treads:
+-++ Iron Treads:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 52
@@ -4340,7 +4342,7 @@ Iron Treads:
     Time: Morning, Noon, Evening, Night
     Version: Violet
     Held Item: Booster Energy (5%)
-Iron Moth:
+-++ Iron Moth:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 52
@@ -4350,7 +4352,7 @@ Iron Moth:
     Time: Morning, Noon, Evening, Night
     Version: Violet
     Held Item: Booster Energy (5%)
-Iron Hands:
+-++ Iron Hands:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 52
@@ -4360,7 +4362,7 @@ Iron Hands:
     Time: Morning, Noon, Evening, Night
     Version: Violet
     Held Item: Booster Energy (5%)
-Iron Jugulis:
+-++ Iron Jugulis:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 52
@@ -4370,7 +4372,7 @@ Iron Jugulis:
     Time: Morning, Noon, Evening, Night
     Version: Violet
     Held Item: Booster Energy (5%)
-Iron Thorns:
+-++ Iron Thorns:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 52
@@ -4380,7 +4382,7 @@ Iron Thorns:
     Time: Morning, Noon, Evening, Night
     Version: Violet
     Held Item: Booster Energy (5%)
-Iron Bundle:
+-++ Iron Bundle:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 52
@@ -4390,7 +4392,7 @@ Iron Bundle:
     Time: Morning, Noon, Evening, Night
     Version: Violet
     Held Item: Booster Energy (5%)
-Iron Bundle:
+-++ Iron Bundle:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 52
@@ -4400,7 +4402,7 @@ Iron Bundle:
     Time: Morning, Noon, Evening, Night
     Version: Violet
     Held Item: None
-Iron Valiant:
+-++ Iron Valiant:
     Gender: Default
     Encounter Rate: 50%
     Minimum Level: 52
@@ -4410,7 +4412,7 @@ Iron Valiant:
     Time: Morning, Noon, Evening, Night
     Version: Violet
     Held Item: Booster Energy (5%)
-Tinkatink:
+-++ Tinkatink:
     Gender: Default
     Encounter Rate: 60%
     Minimum Level: 10
@@ -4420,7 +4422,7 @@ Tinkatink:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Tinkatuff:
+-++ Tinkatuff:
     Gender: Default
     Encounter Rate: 36%
     Minimum Level: 24
@@ -4430,7 +4432,7 @@ Tinkatuff:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Tinkatuff:
+-++ Tinkatuff:
     Gender: Default
     Encounter Rate: 36%
     Minimum Level: 34
@@ -4440,7 +4442,7 @@ Tinkatuff:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Charcadet:
+-++ Charcadet:
     Gender: Default
     Encounter Rate: 1%
     Minimum Level: 13
@@ -4450,7 +4452,7 @@ Charcadet:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None
-Toedscool:
+-++ Toedscool:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 18
@@ -4460,7 +4462,7 @@ Toedscool:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Tiny Mushroom (5%)
-Toedscool:
+-++ Toedscool:
     Gender: Default
     Encounter Rate: 10%
     Minimum Level: 18
@@ -4470,7 +4472,7 @@ Toedscool:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Tiny Mushroom (5%)
-Toedscruel:
+-++ Toedscruel:
     Gender: Default
     Encounter Rate: 5%
     Minimum Level: 30
@@ -4480,7 +4482,7 @@ Toedscruel:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: Tiny Mushroom (30%)
-Clodsire:
+-++ Clodsire:
     Gender: Default
     Encounter Rate: 48%
     Minimum Level: 22
@@ -4490,3 +4492,50 @@ Clodsire:
     Time: Morning, Noon, Evening, Night
     Version: Scarlet, Violet
     Held Item: None`
+
+function transformStats(value, key) {
+    switch (key) {
+        case "Gender":
+            return value
+        case "Encounter Rate":
+            return parseInt(value) / 100
+        case "Minimum Level":
+            return parseInt(value)
+
+        case "Maximum Level":
+            return parseInt(value)
+
+        case "Biome":
+            return _.mapValues(Object.fromEntries(value.split(", ").map(a => a.match(/(.*)\((\d*)%\)/)).map(_.tail)), a => parseInt(a) / 100)
+
+        case "Area":
+            return value.split(", ")
+
+        case "Time":
+            return value.split(", ")
+
+        case "Version":
+            return value.split(", ")
+
+        case "Held Item":
+            return value
+            
+
+    }
+}
+
+let bla = _.tail(encounterRates.split("-++")).map(a => {
+    const [pokemon, stats] =  a.split(":\n")
+    const statsObj = Object.fromEntries(stats.trim().split('\n').map(a => {
+        const [k, v] = a.split(': ')
+        return [k.trim(), v]
+    }))
+    return [pokemon, _.mapValues(statsObj, transformStats)]
+})
+
+let bla2 = Object.fromEntries(Object.entries(_.groupBy(bla, a => a[0]))
+    .map(([pokemon, encounters]) => [pokemon.trim(), encounters.map(a => a[1])]))
+
+fs.writeFile("./encounter-rates.json", JSON.stringify(bla2), "utf8", () => {})
+
+console.log(bla2)
